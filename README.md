@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-next-line -->
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry Demo
 
+## How to Configure the OTel Community Demo App to Send Telemetry Data to Parseable
+
+This demo is already configured to send telemetry data (logs, metrics, and traces) to [Parseable](https://www.parseable.com/). Simply run the application using Docker Compose as described in the [Docker deployment](#quick-start) section, and the OpenTelemetry Collector will automatically export telemetry to the Parseable instance included in the deployment.
+
+Parseable is accessible at http://localhost:8000 with default credentials (username: `admin`, password: `admin`).
+
+![Parseable Dashboard](./parseable-landingpage.png)
+
 [![Slack](https://img.shields.io/badge/slack-@cncf/otel/demo-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C03B4CWV4DA)
 [![Version](https://img.shields.io/github/v/release/open-telemetry/opentelemetry-demo?color=blueviolet)](https://github.com/open-telemetry/opentelemetry-demo/releases)
 [![Commits](https://img.shields.io/github/commits-since/open-telemetry/opentelemetry-demo/latest?color=ff69b4&include_prereleases)](https://github.com/open-telemetry/opentelemetry-demo/graphs/commit-activity)
@@ -60,15 +68,16 @@ keeping it up to date for you.
 |---------------------------|----------------|----------------------------------|
 | [AlibabaCloud LogService] | [Elastic]      |  [OpenSearch]                    |
 | [AppDynamics]             | [Google Cloud] |  [Oracle]                        |
-| [Aspecto]                 | [Grafana Labs] |  [Sentry]                        |
-| [Axiom]                   | [Guance]       |  [ServiceNow Cloud Observability]|
-| [Axoflow]                 | [Honeycomb.io] |  [SigNoz]                        |
-| [Azure Data Explorer]     | [Instana]      |  [Splunk]                        |
-| [Causely]                 | [Kloudfuse]    |  [Sumo Logic]                    |
-| [Coralogix]               | [Last9]        |  [TelemetryHub]                  |
-| [Dash0]                   | [Liatrio]      |  [Teletrace]                     |
-| [Datadog]                 | [Logz.io]      |  [Tracetest]                     |
-| [Dynatrace]               | [New Relic]    |  [Uptrace]                       |
+| [Aspecto]                 | [Grafana Labs] |  [Parseable]                     |
+| [Axiom]                   | [Guance]       |  [Sentry]                        |
+| [Axoflow]                 | [Honeycomb.io] |  [ServiceNow Cloud Observability]|
+| [Azure Data Explorer]     | [Instana]      |  [SigNoz]                        |
+| [Causely]                 | [Kloudfuse]    |  [Splunk]                        |
+| [Coralogix]               | [Last9]        |  [Sumo Logic]                    |
+| [Dash0]                   | [Liatrio]      |  [TelemetryHub]                  |
+| [Datadog]                 | [Logz.io]      |  [Teletrace]                     |
+| [Dynatrace]               | [New Relic]    |  [Tracetest]                     |
+| [Uptrace]                 |                |                                  |
 
 ## Contributing
 
@@ -136,6 +145,7 @@ For more information about the emeritus role, see the [community repository](htt
 [New Relic]: https://github.com/newrelic/opentelemetry-demo
 [OpenSearch]: https://github.com/opensearch-project/opentelemetry-demo
 [Oracle]: https://github.com/oracle-quickstart/oci-o11y-solutions/blob/main/knowledge-content/opentelemetry-demo
+[Parseable]: https://github.com/parseablehq/opentelemetry-demo
 [Sentry]: https://github.com/getsentry/opentelemetry-demo
 [ServiceNow Cloud Observability]: https://docs.lightstep.com/otel/quick-start-operator#send-data-from-the-opentelemetry-demo
 [SigNoz]: https://signoz.io/blog/opentelemetry-demo/
