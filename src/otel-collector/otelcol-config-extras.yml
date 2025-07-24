@@ -16,3 +16,43 @@
 #    pipelines:
 #      traces:
 #        exporters: [spanmetrics, otlphttp/example]
+exporters:
+  otlphttp/parseablelogs:
+    endpoint: "http://parseable:8000"
+    headers:
+      Authorization: "Basic YWRtaW46YWRtaW4="  # admin:admin in base64
+      X-P-Stream: otel-logs
+      X-P-Log-Source: otel-logs
+      Content-Type: application/json
+    encoding: json
+    tls:
+      insecure: true
+  otlphttp/parseablemetrics:
+    endpoint: "http://parseable:8000"
+    headers:
+      Authorization: "Basic YWRtaW46YWRtaW4="  # admin:admin in base64
+      X-P-Stream: otel-metrics
+      X-P-Log-Source: otel-metrics
+      Content-Type: application/json
+    encoding: json
+    tls:
+      insecure: true
+  otlphttp/parseabletraces:
+    endpoint: "http://parseable:8000"
+    headers:
+      Authorization: "Basic YWRtaW46YWRtaW4="  # admin:admin in base64
+      X-P-Stream: otel-traces
+      X-P-Log-Source: otel-traces
+      Content-Type: application/json
+    encoding: json
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    logs:
+      exporters: [otlphttp/parseablelogs]
+    metrics:
+      exporters: [otlphttp/parseablemetrics, otlphttp/prometheus, debug]
+    traces:
+      exporters: [otlphttp/parseabletraces, otlp, debug]
