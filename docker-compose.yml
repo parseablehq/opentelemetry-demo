@@ -856,3 +856,21 @@ services:
       timeout: 10s
       retries: 10
     logging: *logging
+
+  # Parseable
+  parseable:
+    image: parseable/parseable:v2.4.0
+    container_name: parseable
+    command: parseable local-store
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./config/parseable/parseable_env
+    volumes:
+      - parseable-data:/staging
+    networks:
+      - default
+    logging: *logging
+
+volumes:
+  parseable-data:
