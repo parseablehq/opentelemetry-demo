@@ -3,9 +3,30 @@
 
 ## How to Configure the OTel Community Demo App to Send Telemetry Data to Parseable
 
-This demo is already configured to send telemetry data (logs, metrics, and traces) to [Parseable](https://www.parseable.com/). Simply run the application using Docker Compose as described in the [Docker deployment](#quick-start) section, and the OpenTelemetry Collector will automatically export telemetry to the Parseable instance included in the deployment.
+This demo is already configured to send telemetry data (logs, metrics, and traces) to [Parseable](https://www.parseable.com/) through two methods:
+
+1. **OpenTelemetry Collector**: Exports logs, metrics, and traces directly to Parseable
+2. **Fluent Bit**: Collects container logs and forwards them to Parseable
+
+Simply run the application using Docker Compose as described in the [Docker deployment](#quick-start) section, and both the OpenTelemetry Collector and Fluent Bit will automatically export telemetry to the Parseable instance included in the deployment.
 
 Parseable is accessible at http://localhost:8000 with default credentials (username: `admin`, password: `admin`).
+
+### Running with Fluent Bit Instead of OpenTelemetry Collector
+
+To use Fluent Bit as the telemetry collector instead of the OpenTelemetry Collector:
+
+1. Use the Fluent Bit docker-compose file:
+   ```bash
+   docker-compose -f docker-compose-fluent-bit.yml up -d
+   ```
+
+2. Update the `.env` file to point services to Fluent Bit:
+   ```bash
+   OTEL_COLLECTOR_HOST=fluent-bit
+   ```
+
+Fluent Bit will collect OpenTelemetry data on ports 4317 (gRPC) and 4318 (HTTP) and forward it to Parseable with proper stream separation (logs, metrics, traces).
 
 ![Parseable Dashboard](./parseable-landingpage.png)
 
